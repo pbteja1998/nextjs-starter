@@ -13,6 +13,7 @@
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "@tailwindcss/ui": "^0.6.0",
     "@types/node": "^14.10.0",
     "@types/react": "^16.9.49",
     "postcss-flexbugs-fixes": "^4.2.1",
