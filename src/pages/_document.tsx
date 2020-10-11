@@ -4,30 +4,25 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document';
+} from 'next/document'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
   }
 
   render() {
     return (
       <Html lang='en'>
-        <Head>
-          <link
-            rel='stylesheet'
-            href='https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css'
-          />
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument
