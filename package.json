@@ -18,7 +18,8 @@
     "classnames": "2.2.6",
     "next": "9.5.5",
     "react": "17.0.0",
-    "react-dom": "17.0.0"
+    "react-dom": "17.0.0",
+    "react-query": "2.23.1"
   },
   "devDependencies": {
     "@tailwindcss/ui": "0.6.2",
@@ -45,6 +46,7 @@
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "6.7.0",
     "prettier": "2.1.2",
+    "react-query-devtools": "2.6.0",
     "tailwindcss": "1.9.5",
     "typescript": "4.0.3"
   },
