@@ -1,6 +1,9 @@
 /**
  * Example taken from Tailwind CSS Homepage
  */
+
+import Image from 'next/image'
+
 export default function Home() {
   return (
     <>
@@ -33,14 +36,16 @@ export default function Home() {
           <hr className="hidden w-16 border-gray-300 sm:block" />
         </div>
         <div className="col-start-1 row-start-3 px-4 space-y-3">
-          <p className="flex items-center text-sm font-medium text-black">
-            <img
+          <div className="flex items-center text-sm font-medium text-black">
+            <Image
+              width={24}
+              height={24}
               src="https://tailwindcss.com/_next/static/media/kevin-francis.95a74da39516100146502062fa60d296.jpg"
               alt=""
-              className="w-6 h-6 mr-2 bg-gray-100 rounded-full"
+              className="rounded-full"
             />
-            Hosted by Kevin Francis
-          </p>
+            <p className="ml-2">Hosted by Kevin Francis</p>
+          </div>
           <button
             type="button"
             className="px-6 py-2 text-base font-semibold rounded-lg text-violet-700 bg-violet-100"
@@ -51,24 +56,27 @@ export default function Home() {
         <div className="flex col-start-1 row-start-1 sm:col-start-2 sm:row-span-3">
           <div className="grid w-full grid-cols-3 grid-rows-2 gap-2">
             <div className="relative col-span-3 row-span-2 md:col-span-2">
-              <img
+              <Image
                 src="https://tailwindcss.com/_next/static/media/beach-house.dc0f86781422bcb8f89e64d49cd7adf6.jpg"
+                layout="fill"
                 alt=""
-                className="absolute inset-0 object-cover w-full h-full bg-gray-100 sm:rounded-lg"
+                className="absolute inset-0 object-cover bg-gray-100 sm:rounded-lg"
               />
             </div>
             <div className="relative hidden md:block">
-              <img
+              <Image
                 src="https://tailwindcss.com/_next/static/media/beach-house-interior.13945f821153afd28151b5dac3e5d713.jpg"
                 alt=""
-                className="absolute inset-0 object-cover w-full h-full bg-gray-100 rounded-lg"
+                layout="fill"
+                className="absolute inset-0 object-cover bg-gray-100 rounded-lg"
               />
             </div>
             <div className="relative hidden md:block">
-              <img
+              <Image
                 src="https://tailwindcss.com/_next/static/media/beach-house-view.bf6f10434bf4589aebba4d3c33834cc2.jpg"
                 alt=""
-                className="absolute inset-0 object-cover w-full h-full bg-gray-100 rounded-lg"
+                layout="fill"
+                className="absolute inset-0 object-cover bg-gray-100 rounded-lg"
               />
             </div>
           </div>
