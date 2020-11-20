@@ -2,12 +2,12 @@ import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import Head from 'next/head'
 import { ReactQueryDevtools } from 'react-query-devtools'
-
 import type { AppProps } from 'next/app'
+import { Provider } from 'next-auth/client'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Provider session={pageProps.session}>
       <Head>
         <title>Next Starter</title>
         <meta property="og:title" content="Next Starter" key="title" />
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Component {...pageProps} />
       <ReactQueryDevtools initialIsOpen={false} />
-    </>
+    </Provider>
   )
 }
 

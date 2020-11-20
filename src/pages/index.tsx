@@ -1,12 +1,47 @@
-/**
- * Example taken from Tailwind CSS Homepage
- */
-
+import { signIn, signOut, useSession } from 'next-auth/client'
 import Image from 'next/image'
 
 export default function Home() {
+  const [session, loading] = useSession()
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
   return (
-    <>
+    <div className="divide-y divide-gray-100">
+      <nav className="p-4">
+        <ul className="flex flex-row-reverse space-x-2">
+          <li>
+            {session ? (
+              <div className="flex items-center space-x-10">
+                <div>
+                  <p>
+                    {' '}
+                    Hello, <b>{session.user.email ?? session.user.name}</b>
+                  </p>
+                </div>
+                <button
+                  onClick={() => signOut()}
+                  className="block px-4 py-2 text-white rounded-md bg-violet-500"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={() => signIn()}
+                  className="block px-4 py-2 text-white rounded-md bg-violet-500"
+                >
+                  Sign In
+                </button>
+              </>
+            )}
+          </li>
+        </ul>
+      </nav>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
         <div className="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
           <p className="text-sm font-medium text-white sm:mb-1 sm:text-gray-500">
@@ -82,6 +117,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
