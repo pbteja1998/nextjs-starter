@@ -1,3 +1,14 @@
+Check out the blog post at [blog.bhanuteja.dev](https://blog.bhanuteja.dev) to deploy this on Vercel.
+
+[Next.js Starter With Authentication + React 17 + TypeScript + Tailwind CSS 2 + ESLint](https://blog.bhanuteja.dev/nextjs-starter-with-authentication-react-17-typescript-tailwind-css-2-eslint)
+
+---
+
+**References:**
+- [🔑 Passwordless Authentication with Next.js, Prisma, and next-auth](https://dev.to/prisma/passwordless-authentication-with-next-js-prisma-and-next-auth-5g8g)
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
