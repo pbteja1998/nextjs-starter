@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['tailwindcss.com'],
+    domains: [],
   },
 }
