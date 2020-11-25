@@ -123,17 +123,15 @@ export default function NavBar() {
                 <p className="text-white">loading....</p>
               ) : session ? (
                 <a
-                  href="#"
                   onClick={() => signOut()}
-                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
                 >
                   Sign Out
                 </a>
               ) : (
                 <a
-                  href="#"
                   onClick={() => signIn()}
-                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
                 >
                   Sign In
                 </a>
