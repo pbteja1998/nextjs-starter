@@ -127,7 +127,7 @@ export default function NavBar() {
                   onClick={() => signOut()}
                   className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700"
                 >
-                  Sign In
+                  Sign Out
                 </a>
               ) : (
                 <a
