@@ -29,7 +29,6 @@
     "@tailwindcss/aspect-ratio": "0.2.0",
     "@tailwindcss/forms": "0.2.1",
     "@tailwindcss/typography": "0.3.1",
-    "@tailwindcss/ui": "0.7.2",
     "@types/classnames": "2.2.11",
     "@types/next-auth": "3.1.17",
     "@types/node": "14.14.10",
