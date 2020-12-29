@@ -14,8 +14,8 @@ export default authHandler
 const options: InitOptions = {
   providers: [
     Providers.GitHub({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
       scope: 'user:email',
     }),
     Providers.Email({
