@@ -1,8 +1,17 @@
+# Next.js Starter
+
+A Next.js starter kit template with **React 17** + **Typescript** + **Tailwind CSS 2** + **React Query 3** + **NextAuth.js** (with **GitHub Auth** + **Passwordless Auth**) + **Fauna DB**
+
+---
+
 Check out the blog post at [blog.bhanuteja.dev](https://blog.bhanuteja.dev) to deploy this on Vercel.
 
 [Next.js Starter With Authentication + React 17 + TypeScript + Tailwind CSS 2 + ESLint](https://blog.bhanuteja.dev/nextjs-starter-with-authentication-react-17-typescript-tailwind-css-2-eslint)
 
 ---
+
+**NOTE:** 
+(Prisma + Postgres) is replaced by Fauna DB in the current version.
 
 **References:**
 - [🔑 Passwordless Authentication with Next.js, Prisma, and next-auth](https://dev.to/prisma/passwordless-authentication-with-next-js-prisma-and-next-auth-5g8g)

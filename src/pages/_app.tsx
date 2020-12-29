@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const description =
     meta.metaDescription ||
     meta.description ||
-    'A Next.js starter kit template with React 17 + Typescript + Tailwind CSS 2 + React Query 3 + GitHub Auth + Passwordless Auth + Prisma 2 + Postgres'
+    'A Next.js starter kit template with React 17 + Typescript + Tailwind CSS 2 + React Query 3 + GitHub Auth + Passwordless Auth + Fauna DB'
 
   return (
     <QueryClientProvider client={queryClient}>
