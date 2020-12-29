@@ -1,42 +1,57 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
-import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
-import { NavBar } from '../components'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { Title, Description, Meta } from '@/components'
+import React from 'react'
+import ProgressBar from '@badrap/bar-of-progress'
+import { Router } from 'next/router'
+
+const progress = new ProgressBar({
+  size: 2,
+  color: '#22D3EE',
+  className: 'bar-of-progress',
+  delay: 100,
+})
+
+if (typeof window !== 'undefined') {
+  progress.start()
+  progress.finish()
+}
+
+Router.events.on('routeChangeStart', progress.start)
+Router.events.on('routeChangeComplete', () => {
+  progress.finish()
+
+  // Will not work if scroll is not on <html>
+  window.scrollTo(0, 0)
+})
+Router.events.on('routeChangeError', progress.finish)
 
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const Layout = (Component as any).layoutProps?.Layout || React.Fragment
+  const layoutProps = (Component as any).layoutProps?.Layout
+    ? { layoutProps: (Component as any).layoutProps }
+    : {}
+  const meta = (Component as any).layoutProps?.meta || {}
+  const description =
+    meta.metaDescription ||
+    meta.description ||
+    'A Next.js starter kit template with React 17 + Typescript + Tailwind CSS 2 + React Query 3 + GitHub Auth + Passwordless Auth + Prisma 2 + Postgres'
+
   return (
     <QueryClientProvider client={queryClient}>
       <Provider session={pageProps.session}>
-        <Head>
-          <title>Next Starter</title>
-          <meta property="og:title" content="Next Starter" key="title" />
-          <meta
-            property="og:description"
-            content="Next Starter Template with Next.js 10 + React 17 + Typescript + ESLint + Prettier + Husky + Tailwind CSS 2.0 + React Query + Tabler Icons + Phosphor Icons"
-            key="description"
-          />
-          <meta
-            name="description"
-            property="og:description"
-            content="Next Starter Template with Next.js 10 + React 17 + Typescript + ESLint + Prettier + Husky + Tailwind CSS 2.0 + React Query + Tabler Icons + Phosphor Icons"
-          />
-          <meta charSet="utf-8" key="charSet" />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-            key="viewport"
-          />
-        </Head>
-        <NavBar />
-        <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <Title suffix="Next Starter">{meta.metaTitle || meta.title}</Title>
+        <Description>{description}</Description>
+        <Meta />
+        <Layout {...layoutProps}>
           <Component {...pageProps} />
-        </div>
+        </Layout>
         <ReactQueryDevtools initialIsOpen={false} />
       </Provider>
     </QueryClientProvider>

@@ -1,5 +1,7 @@
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
+import { NavBar } from '@/components'
+import { ReactNode } from 'react'
 
 export default function Home() {
   const [session] = useSession()
@@ -92,4 +94,20 @@ export default function Home() {
       </main>
     </div>
   )
+}
+
+function HomeLayout({ children }: { children: ReactNode }) {
+  return (
+    <>
+      <NavBar />
+      <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">{children}</div>
+    </>
+  )
+}
+
+Home.layoutProps = {
+  meta: {
+    title: 'Home',
+  },
+  Layout: HomeLayout,
 }
