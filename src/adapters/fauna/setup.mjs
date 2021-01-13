@@ -1,7 +1,7 @@
 import faunadb from 'faunadb'
 const q = faunadb.query
 const client = new faunadb.Client({
-  secret: process.env.FAUNA_SECRET,
+  secret: process.env.FAUNADB_SECRET,
 })
 
 async function main() {
