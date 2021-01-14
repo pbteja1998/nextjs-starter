@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors')
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
@@ -8,9 +8,7 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      // display: ['Inter', 'system-ui', 'sans-serif'],
-      // body: ['Inter', 'system-ui', 'sans-serif'],
-      sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      sans: ['Inter', ...fontFamily.sans],
     },
     extend: {
       colors: {
