@@ -445,7 +445,7 @@ const Adapter = (config, options = {}) => {
         .digest('hex')
       const FQL = q.Let(
         {
-          ref: q.Match(q.Index('vertification_request_by_token'), hashedToken),
+          ref: q.Match(q.Index('verification_request_by_token'), hashedToken),
         },
         q.If(
           q.Exists(q.Var('ref')),
@@ -495,7 +495,7 @@ const Adapter = (config, options = {}) => {
       const FQL = q.Delete(
         q.Select(
           'ref',
-          q.Get(q.Match(q.Index('vertification_request_by_token'), hashedToken))
+          q.Get(q.Match(q.Index('verification_request_by_token'), hashedToken))
         )
       )
 
