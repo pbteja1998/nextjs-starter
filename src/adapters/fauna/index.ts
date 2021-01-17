@@ -6,7 +6,21 @@ import { query as q } from 'faunadb'
 import { createHash, randomBytes } from 'crypto'
 
 const Adapter = (config, options = {}) => {
-  const { faunaClient } = config
+  const {
+    faunaClient,
+    collections = {
+      User: 'users',
+      Account: 'accounts',
+      Session: 'sessions',
+      VerificationRequest: 'verification_requests',
+    },
+    indexes = {
+      Account: 'account_by_provider_account_id',
+      User: 'user_by_email',
+      Session: 'session_by_token',
+      VerificationRequest: 'verification_request_by_token',
+    },
+  } = config
 
   async function getAdapter(appOptions) {
     function _debug(debugCode, ...args) {
@@ -27,7 +41,7 @@ const Adapter = (config, options = {}) => {
       _debug('createUser', profile)
 
       const timestamp = new Date().toISOString()
-      const FQL = q.Create(q.Collection('user'), {
+      const FQL = q.Create(q.Collection(collections.User), {
         data: {
           name: profile.name,
           email: profile.email,
@@ -52,7 +66,7 @@ const Adapter = (config, options = {}) => {
     async function getUser(id) {
       _debug('getUser', id)
 
-      const FQL = q.Get(q.Ref(q.Collection('user'), id))
+      const FQL = q.Get(q.Ref(q.Collection(collections.User), id))
 
       try {
         const user = await faunaClient.query(FQL)
@@ -74,7 +88,7 @@ const Adapter = (config, options = {}) => {
 
       const FQL = q.Let(
         {
-          ref: q.Match(q.Index('user_by_email'), email),
+          ref: q.Match(q.Index(indexes.User), email),
         },
         q.If(q.Exists(q.Var('ref')), q.Get(q.Var('ref')), null)
       )
@@ -99,7 +113,7 @@ const Adapter = (config, options = {}) => {
 
       const FQL = q.Let(
         {
-          ref: q.Match(q.Index('account_by_provider_account_id'), [
+          ref: q.Match(q.Index(indexes.Account), [
             providerId,
             providerAccountId,
           ]),
@@ -108,7 +122,7 @@ const Adapter = (config, options = {}) => {
           q.Exists(q.Var('ref')),
           q.Get(
             q.Ref(
-              q.Collection('user'),
+              q.Collection(collections.User),
               q.Select(['data', 'userId'], q.Get(q.Var('ref')))
             )
           ),
@@ -136,7 +150,7 @@ const Adapter = (config, options = {}) => {
       _debug('updateUser', user)
 
       const timestamp = new Date().toISOString()
-      const FQL = q.Update(q.Ref(q.Collection('user'), user.id), {
+      const FQL = q.Update(q.Ref(q.Collection(collections.User), user.id), {
         data: {
           name: user.name,
           email: user.email,
@@ -160,7 +174,7 @@ const Adapter = (config, options = {}) => {
     async function deleteUser(userId) {
       _debug('deleteUser', userId)
 
-      const FQL = q.Delete(q.Ref(q.Collection('user'), userId))
+      const FQL = q.Delete(q.Ref(q.Collection(collections.User), userId))
 
       try {
         await faunaClient.query(FQL)
@@ -193,7 +207,7 @@ const Adapter = (config, options = {}) => {
       try {
         const timestamp = new Date().toISOString()
         const account = await faunaClient.query(
-          q.Create(q.Collection('account'), {
+          q.Create(q.Collection(collections.Account), {
             data: {
               userId: userId,
               providerId: providerId,
@@ -222,10 +236,7 @@ const Adapter = (config, options = {}) => {
         q.Select(
           'ref',
           q.Get(
-            q.Match(q.Index('account_by_provider_account_id'), [
-              providerId,
-              providerAccountId,
-            ])
+            q.Match(q.Index(indexes.Account), [providerId, providerAccountId])
           )
         )
       )
@@ -249,7 +260,7 @@ const Adapter = (config, options = {}) => {
       }
 
       const timestamp = new Date().toISOString()
-      const FQL = q.Create(q.Collection('session'), {
+      const FQL = q.Create(q.Collection(collections.Session), {
         data: {
           userId: user.id,
           expires: q.Time(expires),
@@ -276,9 +287,7 @@ const Adapter = (config, options = {}) => {
       _debug('getSession', sessionToken)
 
       try {
-        var sessionFQL = q.Get(
-          q.Match(q.Index('session_by_token'), sessionToken)
-        )
+        var sessionFQL = q.Get(q.Match(q.Index(indexes.Session), sessionToken))
 
         const session = faunaClient.query({
           id: q.Select(['ref', 'id'], sessionFQL),
@@ -340,7 +349,7 @@ const Adapter = (config, options = {}) => {
         newExpiryDate.setTime(newExpiryDate.getTime() + sessionMaxAge)
 
         const updatedSession = await faunaClient.query(
-          q.Update(q.Ref(q.Collection('session'), session.id), {
+          q.Update(q.Ref(q.Collection(collections.Session), session.id), {
             data: {
               expires: q.Time(newExpiryDate.toISOString()),
               updatedAt: q.Time(new Date().toISOString()),
@@ -359,10 +368,7 @@ const Adapter = (config, options = {}) => {
 
     async function _deleteSession(sessionToken) {
       const FQL = q.Delete(
-        q.Select(
-          'ref',
-          q.Get(q.Match(q.Index('session_by_token'), sessionToken))
-        )
+        q.Select('ref', q.Get(q.Match(q.Index(indexes.Session), sessionToken)))
       )
 
       return faunaClient.query(FQL)
@@ -407,7 +413,7 @@ const Adapter = (config, options = {}) => {
       }
 
       const timestamp = new Date().toISOString()
-      const FQL = q.Create(q.Collection('verification_request'), {
+      const FQL = q.Create(q.Collection(collections.VerificationRequest), {
         data: {
           identifier: identifier,
           token: hashedToken,
@@ -445,7 +451,7 @@ const Adapter = (config, options = {}) => {
         .digest('hex')
       const FQL = q.Let(
         {
-          ref: q.Match(q.Index('verification_request_by_token'), hashedToken),
+          ref: q.Match(q.Index(indexes.VerificationRequest), hashedToken),
         },
         q.If(
           q.Exists(q.Var('ref')),
@@ -495,7 +501,7 @@ const Adapter = (config, options = {}) => {
       const FQL = q.Delete(
         q.Select(
           'ref',
-          q.Get(q.Match(q.Index('verification_request_by_token'), hashedToken))
+          q.Get(q.Match(q.Index(indexes.VerificationRequest), hashedToken))
         )
       )
 
