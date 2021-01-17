@@ -1,5 +1,7 @@
 /**
  * https://github.com/nextauthjs/next-auth/pull/708
+ * https://github.com/nextauthjs/next-auth/pull/968
+ * https://github.com/nextauthjs/next-auth/pull/1134
  */
 
 import { query as q } from 'faunadb'
@@ -289,7 +291,7 @@ const Adapter = (config, options = {}) => {
       try {
         var sessionFQL = q.Get(q.Match(q.Index(indexes.Session), sessionToken))
 
-        const session = faunaClient.query({
+        const session = await faunaClient.query({
           id: q.Select(['ref', 'id'], sessionFQL),
           userId: q.Select(['data', 'userId'], sessionFQL),
           expires: q.ToMillis(q.Select(['data', 'expires'], sessionFQL)),

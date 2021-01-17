@@ -5,15 +5,15 @@ const client = new faunadb.Client({
 })
 
 async function main() {
-  await client.query(q.CreateCollection({ name: 'account' }))
-  await client.query(q.CreateCollection({ name: 'session' }))
-  await client.query(q.CreateCollection({ name: 'user' }))
-  await client.query(q.CreateCollection({ name: 'verification_request' }))
+  await client.query(q.CreateCollection({ name: 'accounts' }))
+  await client.query(q.CreateCollection({ name: 'sessions' }))
+  await client.query(q.CreateCollection({ name: 'users' }))
+  await client.query(q.CreateCollection({ name: 'verification_requests' }))
 
   await client.query(
     q.CreateIndex({
       name: 'account_by_provider_account_id',
-      source: q.Collection('account'),
+      source: q.Collection('accounts'),
       unique: true,
       terms: [
         { field: ['data', 'providerId'] },
@@ -25,7 +25,7 @@ async function main() {
   await client.query(
     q.CreateIndex({
       name: 'session_by_token',
-      source: q.Collection('session'),
+      source: q.Collection('sessions'),
       unique: true,
       terms: [{ field: ['data', 'sessionToken'] }],
     })
@@ -34,7 +34,7 @@ async function main() {
   await client.query(
     q.CreateIndex({
       name: 'user_by_email',
-      source: q.Collection('user'),
+      source: q.Collection('users'),
       unique: true,
       terms: [{ field: ['data', 'email'] }],
     })
@@ -42,8 +42,8 @@ async function main() {
 
   await client.query(
     q.CreateIndex({
-      name: 'vertification_request_by_token',
-      source: q.Collection('verification_request'),
+      name: 'verification_request_by_token',
+      source: q.Collection('verification_requests'),
       unique: true,
       terms: [{ field: ['data', 'token'] }],
     })
