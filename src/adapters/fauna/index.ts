@@ -42,15 +42,16 @@ const Adapter = (config, options = {}) => {
     async function createUser(profile) {
       _debug('createUser', profile)
 
-      const timestamp = new Date().toISOString()
       const FQL = q.Create(q.Collection(collections.User), {
         data: {
-          name: profile.name,
-          email: profile.email,
-          image: profile.image,
-          emailVerified: profile.emailVerified ? profile.emailVerified : false,
-          createdAt: q.Time(timestamp),
-          updatedAt: q.Time(timestamp),
+          name: profile.name ?? '',
+          email: profile.email ?? '',
+          image: profile.image ?? '',
+          emailVerified: profile.emailVerified
+            ? q.Time(profile.emailVerified.toISOString())
+            : null,
+          createdAt: q.Now(),
+          updatedAt: q.Now(),
         },
       })
 
@@ -151,14 +152,15 @@ const Adapter = (config, options = {}) => {
     async function updateUser(user) {
       _debug('updateUser', user)
 
-      const timestamp = new Date().toISOString()
       const FQL = q.Update(q.Ref(q.Collection(collections.User), user.id), {
         data: {
-          name: user.name,
-          email: user.email,
-          image: user.image,
-          emailVerified: user.emailVerified ? user.emailVerified : false,
-          updatedAt: q.Time(timestamp),
+          name: user.name ?? '',
+          email: user.email ?? '',
+          image: user.image ?? '',
+          emailVerified: user.emailVerified
+            ? q.Time(user.emailVerified.toISOString())
+            : null,
+          updatedAt: q.Now(),
         },
       })
 
@@ -207,7 +209,6 @@ const Adapter = (config, options = {}) => {
       )
 
       try {
-        const timestamp = new Date().toISOString()
         const account = await faunaClient.query(
           q.Create(q.Collection(collections.Account), {
             data: {
@@ -218,8 +219,8 @@ const Adapter = (config, options = {}) => {
               refreshToken: refreshToken,
               accessToken: accessToken,
               accessTokenExpires: accessTokenExpires,
-              createdAt: q.Time(timestamp),
-              updatedAt: q.Time(timestamp),
+              createdAt: q.Now(),
+              updatedAt: q.Now(),
             },
           })
         )
@@ -261,15 +262,14 @@ const Adapter = (config, options = {}) => {
         expires = dateExpires.toISOString()
       }
 
-      const timestamp = new Date().toISOString()
       const FQL = q.Create(q.Collection(collections.Session), {
         data: {
           userId: user.id,
           expires: q.Time(expires),
           sessionToken: randomBytes(32).toString('hex'),
           accessToken: randomBytes(32).toString('hex'),
-          createdAt: q.Time(timestamp),
-          updatedAt: q.Time(timestamp),
+          createdAt: q.Now(),
+          updatedAt: q.Now(),
         },
       })
 
@@ -414,14 +414,13 @@ const Adapter = (config, options = {}) => {
         expires = dateExpires.toISOString()
       }
 
-      const timestamp = new Date().toISOString()
       const FQL = q.Create(q.Collection(collections.VerificationRequest), {
         data: {
           identifier: identifier,
           token: hashedToken,
           expires: expires === null ? null : q.Time(expires),
-          createdAt: q.Time(timestamp),
-          updatedAt: q.Time(timestamp),
+          createdAt: q.Now(),
+          updatedAt: q.Now(),
         },
       })
 
