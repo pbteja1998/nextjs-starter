@@ -54,4 +54,4 @@ async function main() {
   )
 }
 
-main()
+main().catch((error) => console.log(error))
