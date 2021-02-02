@@ -16,11 +16,21 @@ const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options)
 export default authHandler
 
 const options: InitOptions = {
+  debug: true,
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
       scope: 'user:email',
+      profile: (profileData) => {
+        // Update this to send more data to "createUser" method in fauna adapter
+        return {
+          id: profileData.id,
+          name: profileData.name || profileData.login,
+          email: profileData.email,
+          image: profileData.avatar_url,
+        }
+      },
     }),
     Providers.Email({
       server: {

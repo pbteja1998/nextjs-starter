@@ -12,7 +12,8 @@
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
     "validate": "npm-run-all --parallel check-types check-format lint build",
-    "setup-db": "node ./src/adapters/fauna/setup.mjs"
+    "setup-db": "node ./src/adapters/fauna/setup.mjs",
+    "clear-db": "node ./src/adapters/fauna/clear-db.mjs"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "0.1.1",
@@ -20,7 +21,7 @@
     "classnames": "2.2.6",
     "faunadb": "4.0.0",
     "next": "10.0.4",
-    "next-auth": "3.1.0",
+    "next-auth": "3.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-query": "3.5.5",
@@ -31,7 +32,7 @@
     "@tailwindcss/forms": "0.2.1",
     "@tailwindcss/typography": "0.3.1",
     "@types/classnames": "2.2.11",
-    "@types/next-auth": "3.1.18",
+    "@types/next-auth": "3.1.24",
     "@types/node": "14.14.16",
     "@types/react": "17.0.0",
     "@typescript-eslint/eslint-plugin": "4.11.1",
