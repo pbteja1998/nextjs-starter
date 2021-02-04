@@ -52,6 +52,15 @@ async function main() {
       terms: [{ field: ['data', 'token'] }],
     })
   )
+
+  await client.query(
+    q.CreateIndex({
+      name: 'user_by_username',
+      source: q.Collection('users'),
+      unique: true,
+      terms: [{ field: ['data', 'username'] }],
+    })
+  )
 }
 
 main().catch((error) => console.log(error))

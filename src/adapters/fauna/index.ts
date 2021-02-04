@@ -1,9 +1,3 @@
-/**
- * https://github.com/nextauthjs/next-auth/pull/708
- * https://github.com/nextauthjs/next-auth/pull/968
- * https://github.com/nextauthjs/next-auth/pull/1134
- */
-
 import { query as q } from 'faunadb'
 import { createHash, randomBytes } from 'crypto'
 
@@ -45,11 +39,12 @@ const Adapter = (config, options = {}) => {
       const FQL = q.Create(q.Collection(collections.User), {
         data: {
           name: profile.name ?? '',
-          email: profile.email ?? '',
+          email: profile.email ?? {},
           image: profile.image ?? '',
           emailVerified: profile.emailVerified
             ? q.Time(profile.emailVerified.toISOString())
-            : null,
+            : '',
+          username: profile.username ?? {},
           createdAt: q.Now(),
           updatedAt: q.Now(),
         },
@@ -155,11 +150,12 @@ const Adapter = (config, options = {}) => {
       const FQL = q.Update(q.Ref(q.Collection(collections.User), user.id), {
         data: {
           name: user.name ?? '',
-          email: user.email ?? '',
+          email: user.email ?? {},
           image: user.image ?? '',
           emailVerified: user.emailVerified
             ? q.Time(user.emailVerified.toISOString())
-            : null,
+            : '',
+          username: user.username ?? {},
           updatedAt: q.Now(),
         },
       })
