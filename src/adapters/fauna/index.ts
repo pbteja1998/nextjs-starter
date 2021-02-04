@@ -38,13 +38,13 @@ const Adapter = (config, options = {}) => {
 
       const FQL = q.Create(q.Collection(collections.User), {
         data: {
-          name: profile.name ?? '',
-          email: profile.email ?? {},
-          image: profile.image ?? '',
+          name: profile.name,
+          email: profile.email,
+          image: profile.image,
           emailVerified: profile.emailVerified
             ? q.Time(profile.emailVerified.toISOString())
-            : '',
-          username: profile.username ?? {},
+            : null,
+          username: profile.username,
           createdAt: q.Now(),
           updatedAt: q.Now(),
         },
@@ -149,13 +149,13 @@ const Adapter = (config, options = {}) => {
 
       const FQL = q.Update(q.Ref(q.Collection(collections.User), user.id), {
         data: {
-          name: user.name ?? '',
-          email: user.email ?? {},
-          image: user.image ?? '',
+          name: user.name,
+          email: user.email,
+          image: user.image,
           emailVerified: user.emailVerified
             ? q.Time(user.emailVerified.toISOString())
-            : '',
-          username: user.username ?? {},
+            : null,
+          username: user.username,
           updatedAt: q.Now(),
         },
       })
