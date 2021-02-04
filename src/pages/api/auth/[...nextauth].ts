@@ -62,8 +62,15 @@ const options: InitOptions = {
       // @ts-ignore
       profile: (profileData) => {
         const profileImage =
-          profileData?.profilePicture?.['displayImage~']?.elements[0]
-            ?.identifiers?.[0]?.identifier ?? ''
+          profileData?.profilePicture?.['displayImage~']?.elements?.[3]
+            ?.identifiers?.[0]?.identifier ??
+          profileData?.profilePicture?.['displayImage~']?.elements?.[2]
+            ?.identifiers?.[0]?.identifier ??
+          profileData?.profilePicture?.['displayImage~']?.elements?.[1]
+            ?.identifiers?.[0]?.identifier ??
+          profileData?.profilePicture?.['displayImage~']?.elements?.[0]
+            ?.identifiers?.[0]?.identifier ??
+          ''
         const name =
           profileData.localizedFirstName + ' ' + profileData.localizedLastName
         const username = slugify(name + ' ' + profileData.id, { lower: true })
