@@ -25,8 +25,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-query": "3.5.5",
-    "slugify": "1.4.6",
-    "tabler-icons": "1.35.0"
+    "slugify": "1.4.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "0.2.0",

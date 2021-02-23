@@ -6046,11 +6046,6 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
-tabler-icons@1.35.0:
-  version "1.35.0"
-  resolved "https://registry.yarnpkg.com/tabler-icons/-/tabler-icons-1.35.0.tgz#84afc81b8814ddbe468066182177d25a4def918f"
-  integrity sha512-8ZbCA3oVQAsVYljvA4UiGRdB01hKqjFcbVTViw5y2Hs2SSpZ/iMB2XYbDZkfB8TqWAXvsho272avD5rYe3wXaw==
-
 tailwindcss@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.0.2.tgz#28e1573d29dd4547b26782facb05bcfaa92be366"
