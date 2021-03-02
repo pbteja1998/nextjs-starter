@@ -1,0 +1,40 @@
+CreateCollection({ 
+  name: 'users' 
+})
+
+/**
+# data: {
+#   "name": String,
+#   "email": String,
+#   "image": URLString,
+#   "username": String,
+#   "createdAt": Time,
+#   "updatedAt": Time,
+#   "socials": {
+#     "github": String,
+#     "facebook": String,
+#     "twitter": String,
+#     "linkedin": String,
+#     "codepen": String,
+#     "discord": String,
+#     "blog": String
+#   },
+#   "account": {
+#     "firstName": String,
+#     "lastName": String,
+#     "bio": String
+#   },
+#   "timestamps": {
+#     "createdAt": Time,
+#     "updatedAt": Time
+#   },
+#   otherDetails: {
+#     "userType": String('developer' | 'employer' | 'none')
+#     "mobile": String
+#     "isCurrentlyWorking": String('yes' | 'no' | 'none')
+#     "lookingForWork": String('yes' | 'no' | 'none')
+#     "company": String
+#     "technologiesFamiliarWith": String[]
+#   }
+# }
+**/

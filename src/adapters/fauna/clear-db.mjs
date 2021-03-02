@@ -1,11 +1,11 @@
 import faunadb from 'faunadb'
 const q = faunadb.query
-const isProduction = process.env.NODE_ENV === 'production'
+const useFaunaDocker = process.env.USE_FAUNA_DOCKER === 'true'
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_SECRET ?? 'secret',
-  scheme: isProduction ? 'https' : 'http',
-  domain: isProduction ? 'db.fauna.com' : 'localhost',
-  ...(isProduction ? {} : { port: 8443 }),
+  scheme: useFaunaDocker ? 'http' : 'https',
+  domain: useFaunaDocker ? 'localhost' : 'db.fauna.com',
+  ...(useFaunaDocker ? { port: 8443 } : {}),
 })
 
 async function main() {

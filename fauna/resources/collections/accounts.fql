@@ -1,0 +1,15 @@
+CreateCollection({ 
+  name: 'accounts' 
+})
+
+/**
+# "data": {
+#   "userId": String,
+#   "providerId": String ("github"),
+#   "providerType": "oauth",
+#   "providerAccountId": Number,
+#   "accessToken": String,
+#   "createdAt": Time,
+#   "updatedAt": Time
+# }
+**/
