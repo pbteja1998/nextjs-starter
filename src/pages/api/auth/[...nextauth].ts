@@ -1,4 +1,4 @@
-import NextAuth, { InitOptions } from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import Providers from 'next-auth/providers'
 import { NextApiHandler } from 'next'
 import Fauna from '@/adapters'
@@ -24,7 +24,7 @@ type User = Partial<{
   image: string
 }>
 
-const options: InitOptions = {
+const options: NextAuthOptions = {
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
@@ -42,15 +42,8 @@ const options: InitOptions = {
       },
     }),
     Providers.Email({
-      server: {
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD,
-        },
-      },
-      from: process.env.SMTP_FROM,
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
     }),
     Providers.LinkedIn({
       clientId: process.env.LINKEDIN_ID,
