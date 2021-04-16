@@ -13,12 +13,14 @@
     "check-format": "npm run prettier -- --list-different",
     "validate": "npm-run-all --parallel check-types check-format lint build",
     "setup-db": "npx fauna-schema-migrate apply all",
+    "setup-docker-db": "cross-env FAUNA_ADMIN_KEY=secret FAUNADB_DOMAIN=localhost FAUNADB_SCHEME=http FAUNADB_PORT=8443 npm run setup-db",
     "clear-db": "node ./src/adapters/fauna/clear-db.mjs"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "0.1.2",
     "@headlessui/react": "1.0.0",
     "classnames": "2.3.1",
+    "cross-env": "^7.0.3",
     "faunadb": "4.2.0",
     "next": "10.1.3",
     "next-auth": "3.14.7",
