@@ -7,7 +7,7 @@ import faunadb from 'faunadb'
 import slugify from 'slugify'
 const useFaunaDocker = process.env.USE_FAUNA_DOCKER === 'true'
 const faunaClient = new faunadb.Client({
-  secret: process.env.FAUNADB_SECRET ?? 'secret',
+  secret: useFaunaDocker ? 'secret' : process.env.FAUNADB_SECRET,
   scheme: useFaunaDocker ? 'http' : 'https',
   domain: useFaunaDocker ? 'localhost' : 'db.fauna.com',
   ...(useFaunaDocker ? { port: 8443 } : {}),
