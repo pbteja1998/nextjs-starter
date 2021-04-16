@@ -448,7 +448,10 @@ const Adapter = (config, options = {}) => {
         .digest('hex')
       const FQL = q.Let(
         {
-          ref: q.Match(q.Index(indexes.VerificationRequest), hashedToken),
+          ref: q.Match(q.Index(indexes.VerificationRequest), [
+            hashedToken,
+            identifier,
+          ]),
         },
         q.If(
           q.Exists(q.Var('ref')),
@@ -498,7 +501,12 @@ const Adapter = (config, options = {}) => {
       const FQL = q.Delete(
         q.Select(
           'ref',
-          q.Get(q.Match(q.Index(indexes.VerificationRequest), hashedToken))
+          q.Get(
+            q.Match(q.Index(indexes.VerificationRequest), [
+              hashedToken,
+              identifier,
+            ])
+          )
         )
       )
 

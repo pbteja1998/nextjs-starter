@@ -1,0 +1,1 @@
+Delete(Index("verification_request_by_token"))
