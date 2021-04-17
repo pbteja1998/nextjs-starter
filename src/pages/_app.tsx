@@ -5,6 +5,8 @@ import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import type { ReactNode } from 'react'
 import { Fragment } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import 'tailwindcss/tailwind.css'
 import { SEO } from '../constants/seo-constants'
@@ -34,6 +36,8 @@ const {
   TWITTER_HANDLE,
   FAVICON_LINK,
 } = SEO
+
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname
@@ -77,11 +81,14 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
           },
         ]}
       />
-      <Provider session={pageProps.session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider session={pageProps.session}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Provider>
+      </QueryClientProvider>
     </>
   )
 }
