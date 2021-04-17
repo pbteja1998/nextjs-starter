@@ -11,10 +11,11 @@
     "check-types": "tsc",
     "check-lint": "eslint . --ignore-path .gitignore",
     "check-format": "prettier --list-different --ignore-path .gitignore .",
-    "lint": "eslint . --fix --ignore-path .gitignore",
+    "lint": "eslint . --cache --fix --ignore-path .gitignore",
     "format": "prettier --write --list-different --ignore-path .gitignore .",
     "validate": "npm-run-all --parallel check-types lint format",
-    "validate:build": "npm-run-all --parallel validate build"
+    "validate:build": "npm-run-all --parallel validate build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "0.1.2",
@@ -32,10 +33,16 @@
     "autoprefixer": "10.2.5",
     "eslint": "7.24.0",
     "eslint-config-galex": "2.14.1",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "npm-run-all": "4.1.5",
     "postcss": "8.2.10",
     "prettier": "2.2.1",
     "tailwindcss": "2.1.1",
     "typescript": "4.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "yarn lint",
+    "*.{js,jsx,ts,tsx,css,json}": "yarn format"
   }
 }
