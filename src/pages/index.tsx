@@ -1,8 +1,10 @@
+import { signIn, signOut, useSession } from 'next-auth/client'
 import { NextSeo } from 'next-seo'
 
 import { A } from '../components'
 
 export default function Home(): JSX.Element {
+  const [session, loading] = useSession()
   const transition = 'color 0.15s ease, border-color 0.15s ease'
   return (
     <>
@@ -11,25 +13,48 @@ export default function Home(): JSX.Element {
         <main className="flex flex-col items-center justify-center flex-1 px-20 py-0">
           <h1 className="m-0 text-center leading-[4.6rem] text-[4rem]">
             Welcome to{' '}
-            <a
+            <A
               className="hover:underline focus:underline active:underline text-[#0070f3]"
-              href="https://nextjs.org"
+              href="https://github.com/pbteja1998/nextjs-starter"
             >
-              Next.js!
-            </a>
+              Next.js Starter!
+            </A>
           </h1>
 
-          <p className="text-2xl text-center">
-            Get started by editing{' '}
-            <code
-              className="bg-[#fafafa] rounded-[5px] p-3 text-[1.1rem]"
-              style={{
-                fontFamily:
-                  'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono, Courier New, monospace',
-              }}
-            >
-              pages/index.js
-            </code>
+          <p className="mt-4 text-2xl text-center">
+            {session ? (
+              <>
+                Signed in as{' '}
+                <code
+                  className="bg-[#fafafa] rounded-[5px] p-3 text-[1.1rem]"
+                  style={{
+                    fontFamily:
+                      'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono, Courier New, monospace',
+                  }}
+                >
+                  {session.user.email as string}
+                </code>
+              </>
+            ) : (
+              'Not Signed in!'
+            )}
+            {session ? (
+              <button
+                type="button"
+                onClick={() => signOut()}
+                className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
+              >
+                Sign Out
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => signIn()}
+                className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
+              >
+                Sign In
+              </button>
+            )}
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center max-w-[800px] mt-12">

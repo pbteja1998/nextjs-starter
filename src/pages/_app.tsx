@@ -1,4 +1,5 @@
 import ProgressBar from '@badrap/bar-of-progress'
+import { Provider } from 'next-auth/client'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 import Router from 'next/router'
@@ -76,9 +77,11 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
           },
         ]}
       />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </>
   )
 }
