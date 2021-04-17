@@ -1,1 +1,1 @@
-export {}
+export { A } from './A'

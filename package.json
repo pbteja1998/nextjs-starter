@@ -17,6 +17,7 @@
     "validate:build": "npm-run-all --parallel validate build"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "0.1.2",
     "next": "10.1.3",
     "next-seo": "4.24.0",
     "react": "17.0.2",

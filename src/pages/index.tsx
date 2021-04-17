@@ -1,5 +1,7 @@
 import { NextSeo } from 'next-seo'
 
+import { A } from '../components'
+
 export default function Home(): JSX.Element {
   const transition = 'color 0.15s ease, border-color 0.15s ease'
   return (
@@ -31,7 +33,7 @@ export default function Home(): JSX.Element {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center max-w-[800px] mt-12">
-            <a
+            <A
               href="https://nextjs.org/docs"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
@@ -43,9 +45,9 @@ export default function Home(): JSX.Element {
               <p className="text-xl leading-[1.875rem]">
                 Find in-depth information about Next.js features and API.
               </p>
-            </a>
+            </A>
 
-            <a
+            <A
               href="https://nextjs.org/learn"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
@@ -57,9 +59,9 @@ export default function Home(): JSX.Element {
               <p className="text-xl leading-[1.875rem]">
                 Learn about Next.js in an interactive course with quizzes!
               </p>
-            </a>
+            </A>
 
-            <a
+            <A
               href="https://github.com/vercel/next.js/tree/master/examples"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
@@ -71,9 +73,9 @@ export default function Home(): JSX.Element {
               <p className="text-xl leading-[1.875rem]">
                 Discover and deploy boilerplate example Next.js projects.
               </p>
-            </a>
+            </A>
 
-            <a
+            <A
               href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
@@ -85,7 +87,7 @@ export default function Home(): JSX.Element {
               <p className="text-xl leading-[1.875rem]">
                 Instantly deploy your Next.js site to a public URL with Vercel.
               </p>
-            </a>
+            </A>
           </div>
         </main>
 
@@ -107,6 +109,6 @@ export default function Home(): JSX.Element {
 
 Home.layoutProps = {
   Layout: (props: unknown) => (
-    <div className="border-8 border-blue-700" {...props} />
+    <div className="border-l-8 border-blue-700" {...props} />
   ),
 }

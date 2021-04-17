@@ -1,10 +1,27 @@
+import ProgressBar from '@badrap/bar-of-progress'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
-import { Fragment, ReactNode } from 'react'
+import Router from 'next/router'
+import type { ReactNode } from 'react'
+import { Fragment } from 'react'
 
 import 'tailwindcss/tailwind.css'
 import { SEO } from '../constants/seo-constants'
 import '../styles/globals.css'
+
+const progress = new ProgressBar({
+  size: 2,
+  color: '#22D3EE',
+  className: 'bar-of-progress',
+  delay: 100,
+})
+
+Router.events.on('routeChangeStart', progress.start)
+Router.events.on('routeChangeComplete', () => {
+  progress.finish()
+  window.scrollTo(0, 0)
+})
+Router.events.on('routeChangeError', progress.finish)
 
 const {
   DEFAULT_TITLE_TEMPLATE,
