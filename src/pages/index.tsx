@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
             </code>
           </p>
 
-          <div className="flex flex-wrap items-center justify-center max-w-[800px] mt-12">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center max-w-[800px] mt-12">
             <a
               href="https://nextjs.org/docs"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
@@ -103,4 +103,10 @@ export default function Home(): JSX.Element {
       </div>
     </>
   )
+}
+
+Home.layoutProps = {
+  Layout: (props: unknown) => (
+    <div className="border-8 border-blue-700" {...props} />
+  ),
 }

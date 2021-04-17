@@ -1,5 +1,6 @@
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
+import { Fragment, ReactNode } from 'react'
 
 import 'tailwindcss/tailwind.css'
 import { SEO } from '../constants/seo-constants'
@@ -19,6 +20,12 @@ const {
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname
   const url = `${DEFAULT_CANONICAL}${canonicalPath}`
+  const Layout =
+    (Component as typeof Component & {
+      layoutProps: {
+        Layout: (props: { children: ReactNode } & unknown) => JSX.Element
+      }
+    }).layoutProps?.Layout || Fragment
   return (
     <>
       <DefaultSeo
@@ -52,7 +59,9 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
           },
         ]}
       />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
