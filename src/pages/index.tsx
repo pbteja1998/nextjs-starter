@@ -101,7 +101,7 @@ export default function Home(): JSX.Element {
             </A>
 
             <A
-              href="https://vercel.com/new?utm_source=pbteja1998-nextjs-starter&utm_medium=default-template&utm_campaign=pbteja1998-nextjs-starter"
+              href="https://github.com/pbteja1998/nextjs-starter/blob/master/README.md#deploying"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
                 transition,
@@ -119,7 +119,7 @@ export default function Home(): JSX.Element {
 
         <footer className="w-full h-[100px] border border-[#eaeaea] flex justify-center items-center">
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://vercel.com/new?utm_source=pbteja1998-nextjs-starter&utm_medium=default-template&utm_campaign=pbteja1998-nextjs-starter"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center"
