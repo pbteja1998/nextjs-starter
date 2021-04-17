@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug:dev": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
     "next": "10.1.3",
