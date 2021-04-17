@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
 
           <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center max-w-[800px] mt-12">
             <A
-              href="https://nextjs.org/docs"
+              href="https://github.com/pbteja1998/nextjs-starter/blob/master/README.md"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
                 transition,
@@ -68,40 +68,40 @@ export default function Home(): JSX.Element {
             >
               <h3 className="mb-4 text-2xl">Documentation &rarr;</h3>
               <p className="text-xl leading-[1.875rem]">
-                Find in-depth information about Next.js features and API.
+                Find info about nextjs-starter template features.
               </p>
             </A>
 
             <A
-              href="https://nextjs.org/learn"
+              href="https://github.com/pbteja1998/nextjs-starter/issues/new"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
                 transition,
                 flexBasis: '45%',
               }}
             >
-              <h3 className="mb-4 text-2xl">Learn &rarr;</h3>
+              <h3 className="mb-4 text-2xl">Issue &rarr;</h3>
               <p className="text-xl leading-[1.875rem]">
-                Learn about Next.js in an interactive course with quizzes!
+                Open an issue on GitHub if you face any problems.
               </p>
             </A>
 
             <A
-              href="https://github.com/vercel/next.js/tree/master/examples"
+              href="https://github.com/pbteja1998/nextjs-starter/blob/master/README.md#faq"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
                 transition,
                 flexBasis: '45%',
               }}
             >
-              <h3 className="mb-4 text-2xl">Examples &rarr;</h3>
+              <h3 className="mb-4 text-2xl">FAQs &rarr;</h3>
               <p className="text-xl leading-[1.875rem]">
-                Discover and deploy boilerplate example Next.js projects.
+                Go through the frequently asked questions for your questions.
               </p>
             </A>
 
             <A
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              href="https://vercel.com/new?utm_source=pbteja1998-nextjs-starter&utm_medium=default-template&utm_campaign=pbteja1998-nextjs-starter"
               className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
               style={{
                 transition,
@@ -110,7 +110,8 @@ export default function Home(): JSX.Element {
             >
               <h3 className="mb-4 text-2xl">Deploy &rarr;</h3>
               <p className="text-xl leading-[1.875rem]">
-                Instantly deploy your Next.js site to a public URL with Vercel.
+                Instantly deploy a next-starter site to a public URL with
+                Vercel.
               </p>
             </A>
           </div>
