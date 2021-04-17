@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-export default function Home() {
+export default function Home(): JSX.Element {
+  const transition = 'color 0.15s ease, border-color 0.15s ease'
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-2 py-0">
       <Head>
@@ -37,7 +38,7 @@ export default function Home() {
             href="https://nextjs.org/docs"
             className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
             style={{
-              transition: 'color 0.15s ease, border-color 0.15s ease',
+              transition,
               flexBasis: '45%',
             }}
           >
@@ -51,7 +52,7 @@ export default function Home() {
             href="https://nextjs.org/learn"
             className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
             style={{
-              transition: 'color 0.15s ease, border-color 0.15s ease',
+              transition,
               flexBasis: '45%',
             }}
           >
@@ -65,7 +66,7 @@ export default function Home() {
             href="https://github.com/vercel/next.js/tree/master/examples"
             className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
             style={{
-              transition: 'color 0.15s ease, border-color 0.15s ease',
+              transition,
               flexBasis: '45%',
             }}
           >
@@ -79,7 +80,7 @@ export default function Home() {
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className="m-4 p-6 text-left border border-[#eaeaea] rounded-[10px] hover:text-[#0070f3] hover:border-[#0070f3] focus:text-[#0070f3] focus:border-[#0070f3] active:text-[#0070f3] active:border-[#0070f3]"
             style={{
-              transition: 'color 0.15s ease, border-color 0.15s ease',
+              transition,
               flexBasis: '45%',
             }}
           >
