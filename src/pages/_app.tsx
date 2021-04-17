@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
           locale: 'en_US',
           url,
           site_name: SITE_NAME,
-          title: DEFAULT_TITLE,
+          title: SITE_NAME,
           description: DEFAULT_DESCRIPTION,
           images: [
             {
