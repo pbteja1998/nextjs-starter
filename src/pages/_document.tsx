@@ -23,7 +23,7 @@ class MyDocument extends Document {
           <script
             async
             defer
-            data-domain={process.env.NEXTAUTH_URL}
+            data-domain={process.env.URL}
             src="https://plausible.io/js/plausible.js"
           />
         </Head>

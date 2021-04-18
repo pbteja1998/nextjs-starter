@@ -1,6 +1,5 @@
+import { env } from '@/constants/env'
 import faunadb from 'faunadb'
-
-import { env } from './../constants/env'
 
 export function getFaunaClient(): faunadb.Client {
   const useFaunaDocker = env.USE_FAUNA_DOCKER === 'true'
