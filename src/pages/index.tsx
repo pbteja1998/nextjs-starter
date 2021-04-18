@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
             Welcome to{' '}
             <A
               className="hover:underline focus:underline active:underline text-[#0070f3]"
-              href="/help"
+              href="https://github.com/pbteja1998/nextjs-starter"
             >
               Next.js Starter!
             </A>
