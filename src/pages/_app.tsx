@@ -40,7 +40,7 @@ const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname
-  const url = `${DEFAULT_CANONICAL}${canonicalPath}`
+  const url = `${DEFAULT_CANONICAL }${canonicalPath}`
   const Layout =
     (Component as typeof Component & {
       layoutProps: {
