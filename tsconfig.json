@@ -1,5 +1,18 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components": ["src/components"],
+      "@/components/*": ["src/components/*"],
+      "@/adapters": ["src/adapters/fauna/index"],
+      "@/adapters/*": ["src/adapters/fauna/*"],
+      "@/constants": ["src/constants/index"],
+      "@/constants/*": ["src/constants/*"],
+      "@/styles": ["src/styles/index"],
+      "@/styles/*": ["src/styles/*"],
+      "@/utils": ["src/utils/index"],
+      "@/utils/*": ["src/utils/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

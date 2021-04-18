@@ -1,3 +1,4 @@
+import { SEO } from '@/constants/seo-constants'
 import ProgressBar from '@badrap/bar-of-progress'
 import { Provider } from 'next-auth/client'
 import { DefaultSeo } from 'next-seo'
@@ -7,10 +8,8 @@ import type { ReactNode } from 'react'
 import { Fragment } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-
 import 'tailwindcss/tailwind.css'
-import { SEO } from '../constants/seo-constants'
-import '../styles/globals.css'
+import '@/styles/globals.css'
 
 const progress = new ProgressBar({
   size: 2,

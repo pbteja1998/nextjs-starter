@@ -1,7 +1,6 @@
+import { A } from '@/components'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { NextSeo } from 'next-seo'
-
-import { A } from '../components'
 
 export default function Home(): JSX.Element {
   const [session, loading] = useSession()
@@ -15,7 +14,7 @@ export default function Home(): JSX.Element {
             Welcome to{' '}
             <A
               className="hover:underline focus:underline active:underline text-[#0070f3]"
-              href="https://github.com/pbteja1998/nextjs-starter"
+              href="/help"
             >
               Next.js Starter!
             </A>
