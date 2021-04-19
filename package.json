@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@badrap/bar-of-progress": "0.1.2",
+    "@headlessui/react": "1.0.0",
+    "@heroicons/react": "1.0.1",
     "faunadb": "4.2.0",
     "next": "10.1.3",
     "next-auth": "3.14.8",
