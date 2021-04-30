@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
                       'Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono, Courier New, monospace',
                   }}
                 >
-                  {session.user.email as string}
+                  {session.user && (session.user.email as string)}
                 </code>
               </>
             ) : (

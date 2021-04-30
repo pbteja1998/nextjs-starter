@@ -1,10 +1,9 @@
+import Fauna from '@/adapters'
+import { env } from '@/constants/env'
+import { getFaunaClient } from '@/utils'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import slugify from 'slugify'
-
-import Fauna from '../../../adapters/fauna'
-import { getFaunaClient } from '../../../utils'
-import { env } from './../../../constants/env'
 
 type GitHubEmailResponse = {
   email: string
@@ -30,7 +29,7 @@ export default NextAuth({
           'https://api.github.com/user/emails',
           {
             headers: {
-              Authorization: `token ${accessToken as string}`,
+              Authorization: `token ${accessToken}`,
             },
           }
         ).then((res) => res.json())
@@ -54,12 +53,16 @@ export default NextAuth({
       profile: async (profileData, tokens) => {
         const DISPLAY_IMAGE = 'displayImage~'
         const profileImage =
+          // @ts-expect-error Object is of type 'unknown'.ts(2571)
           profileData?.profilePicture?.[DISPLAY_IMAGE]?.elements?.[3]
             ?.identifiers?.[0]?.identifier ??
+          // @ts-expect-error Object is of type 'unknown'.ts(2571)
           profileData?.profilePicture?.[DISPLAY_IMAGE]?.elements?.[2]
             ?.identifiers?.[0]?.identifier ??
+          // @ts-expect-error Object is of type 'unknown'.ts(2571)
           profileData?.profilePicture?.[DISPLAY_IMAGE]?.elements?.[1]
             ?.identifiers?.[0]?.identifier ??
+          // @ts-expect-error Object is of type 'unknown'.ts(2571)
           profileData?.profilePicture?.[DISPLAY_IMAGE]?.elements?.[0]
             ?.identifiers?.[0]?.identifier ??
           ''
@@ -72,12 +75,12 @@ export default NextAuth({
           'https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))',
           {
             headers: {
-              Authorization: `Bearer ${accessToken as string}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         ).then((res) => res.json())
         return {
-          id,
+          id: id as string,
           name,
           email:
             emailResponse?.elements?.[0]?.['handle~']?.emailAddress ?? null,
