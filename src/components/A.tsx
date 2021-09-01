@@ -8,7 +8,7 @@ export function A(
 
   if (isInternalLink) {
     return (
-      <Link href={href as string} passHref>
+      <Link href={href} passHref>
         <a {...rest}>{children}</a>
       </Link>
     )

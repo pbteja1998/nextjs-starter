@@ -1,6 +1,7 @@
-import { A } from '@/components'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { NextSeo } from 'next-seo'
+
+import { A } from '@/components'
 
 export default function Home(): JSX.Element {
   const [session, loading] = useSession()

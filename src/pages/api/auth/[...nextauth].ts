@@ -1,9 +1,10 @@
-import Fauna from '@/adapters'
-import { env } from '@/constants/env'
-import { getFaunaClient } from '@/utils'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import slugify from 'slugify'
+
+import Fauna from '@/adapters'
+import { env } from '@/constants/env'
+import { getFaunaClient } from '@/utils'
 
 type GitHubEmailResponse = {
   email: string

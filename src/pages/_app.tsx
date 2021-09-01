@@ -1,14 +1,14 @@
-import { SEO } from '@/constants/seo-constants'
 import ProgressBar from '@badrap/bar-of-progress'
 import { Provider } from 'next-auth/client'
 import { DefaultSeo } from 'next-seo'
+import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import { Fragment } from 'react'
+import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-import type { AppProps } from 'next/app'
-import type { ReactNode } from 'react'
+import { SEO } from '@/constants/seo-constants'
 import 'tailwindcss/tailwind.css'
 import '@/styles/globals.css'
 
